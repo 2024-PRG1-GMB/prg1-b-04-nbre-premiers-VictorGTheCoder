@@ -1,5 +1,5 @@
 /*
-Created by Victor Giordani
+Created by @VictorGTheCoder
 Date: 3 October 2024
 */
 
@@ -9,7 +9,9 @@ using namespace std;
 
 
 int main() {
-    int limite;
+    int         limite;
+    const int   nombre_par_ligne = 5;
+    int         compteur_affichage = 0;
 
     START:    
     do
@@ -18,38 +20,37 @@ int main() {
         cin >> limite;
     } while (limite < 2 || limite > 1000);
 
-    const int nombre_par_ligne = 5;
-    int nb_actuellement_affiche = 0;
 
-    for (int nombre_test = 2; nombre_test <= limite; nombre_test++) {
+    // Afficher les nombres premiers jusqu'à la limite
+    for (int nombre = 2; nombre <= limite; nombre++) {
         bool est_premier = true;
-        for (int diviseur = 2; diviseur * diviseur <= nombre_test; diviseur++) {
-            if (nombre_test % diviseur == 0) {
+        for (int diviseur = 2; diviseur * diviseur <= nombre; diviseur++) {
+            if (nombre % diviseur == 0) {
                 est_premier = false;
                 break;
             }
         }
 
         if (est_premier) {
-            cout << "\t" << nombre_test << " ";
-            nb_actuellement_affiche++;
-            if (nb_actuellement_affiche == nombre_par_ligne)
+            cout << "\t" << nombre << " ";
+            compteur_affichage++;
+            if (compteur_affichage == nombre_par_ligne)
             {
                 cout << endl;
-                nb_actuellement_affiche = 0;
+                compteur_affichage = 0;
             }
         }
     }
     cout << endl;
 
-    char restartProgram;
+    char reponse;
     do
     {
         cout << "Voulez vous recommencez [O/N] : ";
-        cin >> restartProgram;
-    } while (restartProgram != 'N' && restartProgram != 'O');
+        cin >> reponse;
+    } while (reponse != 'N' && reponse != 'O');
     
-    if (restartProgram == 'O')
+    if (reponse == 'O')
         goto START;
 
     return EXIT_SUCCESS; 
