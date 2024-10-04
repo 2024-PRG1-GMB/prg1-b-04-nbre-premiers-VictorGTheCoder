@@ -46,7 +46,7 @@ int main() {
     char reponse;
     do
     {
-        cout << "Voulez vous recommencez [O/N] : ";
+        cout << "Voulez-vous recommencez [O/N] : ";
         cin >> reponse;
     } while (reponse != 'N' && reponse != 'O');
     
