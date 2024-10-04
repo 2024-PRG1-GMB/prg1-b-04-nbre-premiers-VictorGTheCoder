@@ -1,45 +1,23 @@
-
-//Created by Victor Giordani
-//Date: 3 October 2024
-
+/*
+Created by Victor Giordani
+Date: 3 October 2024
+*/
 
 #include <iostream>
-#include <vector>
-#include <chrono>
 
 using namespace std;
 
-void afficher_vector_bool(vector<bool> v) {
-    for (bool nb : v) {
-        cout << nb << ", ";
-    }
-    cout << endl;
-}
 
-void afficher_vector_bool_en_decimal(vector<bool> v) {
-    for (int nb = 0; nb < v.size(); ++nb) {
-        if (v[nb]) cout << '\t' << nb << " ";
-    }
-    cout << endl;
-}
+int main() {
+    int limite;
 
-void cribleEratosthene(int limite) {
-    vector<bool> cribleBoolean(limite, true);
-    cribleBoolean[0] = false;
-    cribleBoolean[1] = false;
+    START:    
+    do
+    {
+        cout << "Saisir un valeur entre 2 et 1000 : ";
+        cin >> limite;
+    } while (limite < 2 || limite > 1000);
 
-
-    for (int p = 2; p * p <= limite; ++p) {
-        if (cribleBoolean[p]) {
-            for (int i = p; i <= limite; i+=p) {
-                cribleBoolean[i] = false;
-            }
-        }
-    }
-    afficher_vector_bool_en_decimal(cribleBoolean);
-}
-
-void afficher_nombre_premier(int limite) {
     const int nombre_par_ligne = 5;
     int nb_actuellement_affiche = 0;
 
@@ -63,25 +41,8 @@ void afficher_nombre_premier(int limite) {
         }
     }
     cout << endl;
-}
 
-int main() {
-    auto start = chrono::high_resolution_clock::now();
-    int limite;
-    START:    
-    do
-    {
-        cout << "Saisir un valeur entre 2 et 1000 : ";
-        cin >> limite;
-    } while (limite < 2 || limite > 1000);
-
-    afficher_nombre_premier(limite);
-
-    auto end = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::milliseconds>(end - start);
-    cout << "Time taken " << duration.count() << "us" << endl;
-
-    char restartProgram; 
+    char restartProgram;
     do
     {
         cout << "Voulez vous recommencez [O/N] : ";
