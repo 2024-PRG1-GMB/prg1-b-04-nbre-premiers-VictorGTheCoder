@@ -43,14 +43,14 @@ int main() {
     }
     cout << endl;
 
-    char reponse;
+    string reponse; // Pas un char pour gérer correctement les cas où l'utilisateur entre plusieurs caractères.
     do
     {
         cout << "Voulez-vous recommencez [O/N] : ";
         cin >> reponse;
-    } while (reponse != 'N' && reponse != 'O');
+    } while (reponse != "N" && reponse != "O");
     
-    if (reponse == 'O')
+    if (reponse == "O")
         goto START;
 
     return EXIT_SUCCESS; 
